@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+option csharp_namespace = "GrpcBFService";
+
+package botapi;
+
+service BotApi {
+	rpc Connect (stream BFPayload) returns (stream BFPayload);
+}
+
+// Need some sort of ID so we can match requests to responses.
+message BFPayload {
+	string kind = 1;
+	string body = 2;
+}
